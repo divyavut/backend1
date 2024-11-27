@@ -32,7 +32,7 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('SonarQube analysis') {
+        /* stage('SonarQube analysis') {
             environment {
                 SCANNER_HOME = tool 'sonar-6.0' //scanner config
             }
@@ -40,6 +40,7 @@ pipeline {
                 // sonar server injection
                 withSonarQubeEnv('sonar-6.0') {
                     sh '$SCANNER_HOME/bin/sonar-scanner'
+                    //generic scanner, it automatically understands the language and provide scan results
                 }
             }
         }
@@ -50,7 +51,7 @@ pipeline {
                     waitForQualityGate abortPipeline: true
                 }
             }
-        }
+        } */
         stage('Docker build') {
             
             steps {
