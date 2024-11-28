@@ -76,13 +76,11 @@ pipeline {
                 expression { params.deploy }
             }
             steps{
-                steps{
-                    build job: 'backend-cd', parameters: [
-                        string(name: 'version', value: "$appVersion"),
-                        string(name: 'ENVIRONMENT', value: "dev"),
+                build job: 'backend-cd', parameters: [
+                    string(name: 'version', value: "$appVersion"),
+                    string(name: 'ENVIRONMENT', value: "dev"),
 
-                    ], wait: false
-                }
+                ], wait: false
             }
         }
     }
